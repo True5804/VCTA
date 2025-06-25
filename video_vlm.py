@@ -10,7 +10,7 @@ API_KEY = "AIzaSyCaWfMhLhTmBuf7wWEfrNOeNTKKkErstzQ"
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
 
 # ✅ File paths
-VIDEO_PATH = "2.mp4"  # The existing video file to analyze
+VIDEO_PATH = "1.mp4"  # The existing video file to analyze
 JSON_OUTPUT_PATH = "video_vlm_analysis.json"
 FRAMES_DIR = "video_frames"  # Directory to save all frames
 ACCIDENT_FRAMES_DIR = "accident_frames"  # Directory to save accident frames
@@ -108,12 +108,11 @@ def detect_accident_and_copy_frames(bullet_points, source_dir, target_dir):
     active_keywords = {"crash", "crashing","crashes", "collision", "collides", "collide", "colliding","fall",
                         "falls", "falling","roll over", "rolls over", "hit","hits", "hitting", "tips over", 
                         "tip over","topple onto", "topples onto", "overturned", "flips over", "flip over",
-                        "lose control", "lost control", "accident", "debris", "out of control", "crashed"}
-    # Aftermath keywords indicate post-accident state (we'll use these to filter out aftermath)
-    aftermath_keywords = {"accident", "incident", "debris", "damage", "damages", "damaged"}
+                        "lose control", "lost control", "accident", "debris", "out of control", "crashed",
+                        "Debris"}
     accident_frames = set()  # Use set to avoid duplicates
     last_accident_time = -float('inf')  # Track the last accident time to avoid overlapping events
-    COOLDOWN_PERIOD = 3  # Seconds to wait before considering a new accident
+
 
     for point in bullet_points:
         bullet_text = point["bullet_point"].lower()
@@ -122,14 +121,13 @@ def detect_accident_and_copy_frames(bullet_points, source_dir, target_dir):
         # Check for active accident keywords (moment of accident)
         active_matched = [keyword for keyword in active_keywords if keyword in words]
         # Check for aftermath keywords (post-accident state)
-        aftermath_matched = [keyword for keyword in aftermath_keywords if keyword in words]
 
         timestamp = int(point["timecode"])
         
         # Detect if this is an active accident event
-        if active_matched and (timestamp - last_accident_time) > COOLDOWN_PERIOD:
+        if active_matched :
             last_accident_time = timestamp  # Update the last accident time
-            timestamps_to_copy = [timestamp]
+            timestamps_to_copy = [timestamp, timestamp+1]
 
             for ts in timestamps_to_copy:
                 if ts >= 0:
