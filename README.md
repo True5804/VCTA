@@ -1,6 +1,4 @@
 # VCTA
-video captioning via Gemini and YOLO
-
 # There are 3 steps for this project :
 
 1. video_vlm.py : Connect to Gemini by API key and generate the caption of input video in JSON format(video_vlm_analysis.json). Filter the key words and copy the specific images into directory called "accident_frames"
