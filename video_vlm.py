@@ -6,7 +6,7 @@ import json
 import shutil
 
 # ✅ Your Gemini API Key (replace with your actual API Key)
-API_KEY = "AIzaSyCfgqjpWXpylj7aCWw7SEUIThDPZku1SE8"
+API_KEY = ""
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
 
 # ✅ File paths
