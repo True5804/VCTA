@@ -1,0 +1,7 @@
+{
+    "road_axis": [0.0, 1.0],
+    "cctv_heading": "south",
+    "vp_road": [1250.3, 410.2],
+    "vp_vert": [650.8, -200.5],
+    "focal_length_px": 1150.6
+}

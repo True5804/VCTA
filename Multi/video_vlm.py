@@ -9,56 +9,27 @@ import shutil
 API_KEY = "AIzaSyCfgqjpWXpylj7aCWw7SEUIThDPZku1SE8"
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={API_KEY}"
 
-# ✅ File paths
-VIDEO_PATH = "2.mp4"  # The existing video file to analyze
-JSON_OUTPUT_PATH = "video_vlm_analysis.json"
-FRAMES_DIR = "video_frames"  # Directory to save all frames
-FRAMES_DIR_01 = "video_frames_0.1s"   
-ACCIDENT_FRAMES_DIR = "accident_frames"  # Directory to save accident frames
-# 事故車道方向輸出的 JSON 檔
-ACCIDENT_DIRECTION_JSON = "accident_direction.json"
-
-# Write the video name to a file so line.py can read it
-with open("current_video.txt", "w") as f:
-    f.write(VIDEO_PATH)
-
-# Ensure directories exist
-if not os.path.exists(FRAMES_DIR):
-    os.makedirs(FRAMES_DIR)
-if not os.path.exists(FRAMES_DIR_01):
-    os.makedirs(FRAMES_DIR_01)
-if not os.path.exists(ACCIDENT_FRAMES_DIR):
-    os.makedirs(ACCIDENT_FRAMES_DIR)
+# ✅ File paths)
 
 def load_camera_heading_from_json(video_path, json_path="data.json"):
     if not os.path.exists(json_path):
         print(f"❌ JSON metadata not found: {json_path}")
         return None
+    
+    video_name = os.path.basename(video_path)
 
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     for item in data:
-        if item.get("檔案名稱") == video_path:
+        if item.get("檔案名稱") == video_name:
             heading = item.get("鏡頭拍攝方向")
             if heading:
-                return heading.lower()  # normalize
+                return heading.lower()
     print(f"⚠️ No matching metadata for video: {video_path}")
     return None
 
-CAMERA_HEADING = load_camera_heading_from_json(VIDEO_PATH)
 
-if CAMERA_HEADING is None:
-    CAMERA_HEADING = "north" 
-
-normalize_map = {
-    "n": "north",
-    "s": "south",
-    "e": "east",
-    "w": "west"
-}
-
-CAMERA_HEADING = normalize_map.get(CAMERA_HEADING.lower(), CAMERA_HEADING)
 
 def extract_frames_per_second(video_path):
     """Extract one frame per second from the video and save as images"""
@@ -221,7 +192,7 @@ def detect_accident_and_copy_frames(bullet_points, source_dir, target_dir):
         print("✅ No accident detected in the video analysis.")
         return None
 
-def analyze_video_with_gemini(video_path):
+def analyze_video_with_gemini(video_path, CAMERA_HEADING):
     """Upload video to Google Gemini API and analyze"""
     video_base64 = encode_video_to_base64(video_path)
     if not video_base64:
@@ -392,8 +363,36 @@ def analyze_video_with_gemini(video_path):
             print("⚠️ Error while requesting accident lane direction from Gemini:", e)
 
 
+def run_video_vlm(video_path, output_dir):
+    global FRAMES_DIR, FRAMES_DIR_01, ACCIDENT_FRAMES_DIR, JSON_OUTPUT_PATH, ACCIDENT_DIRECTION_JSON
 
-if __name__ == "__main__":
-    extract_frames_per_second(VIDEO_PATH)
-    extract_frames_every_0_1s(VIDEO_PATH, FRAMES_DIR_01)
-    analyze_video_with_gemini(VIDEO_PATH)
+    # 動態換 output 資料夾
+    FRAMES_DIR = os.path.join(output_dir, "frames")
+    FRAMES_DIR_01 = os.path.join(output_dir, "frames_01")
+    ACCIDENT_FRAMES_DIR = os.path.join(output_dir, "accident_frames")
+    JSON_OUTPUT_PATH = os.path.join(output_dir, "video_vlm_analysis.json")
+    ACCIDENT_DIRECTION_JSON = os.path.join(output_dir, "accident_direction.json")
+
+    # 目錄確保存在
+    os.makedirs(FRAMES_DIR, exist_ok=True)
+    os.makedirs(FRAMES_DIR_01, exist_ok=True)
+    os.makedirs(ACCIDENT_FRAMES_DIR, exist_ok=True)
+
+    load_camera_heading_from_json(video_path, json_path="data.json")
+    CAMERA_HEADING = load_camera_heading_from_json(video_path)
+
+    if CAMERA_HEADING is None:
+        CAMERA_HEADING = "north" 
+
+    normalize_map = {
+        "n": "north",
+        "s": "south",
+        "e": "east",
+        "w": "west"
+    }
+
+    CAMERA_HEADING = normalize_map.get(CAMERA_HEADING.lower(), CAMERA_HEADING)
+
+    extract_frames_per_second(video_path)
+    extract_frames_every_0_1s(video_path, FRAMES_DIR_01)
+    analyze_video_with_gemini(video_path, CAMERA_HEADING)

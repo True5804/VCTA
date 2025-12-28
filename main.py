@@ -48,27 +48,24 @@ print("✅ video_vlm.py completed.\n")
 show_json_content("video_vlm_analysis.json", "Step 1: AI Video Analysis")
 
 # === STEP 2: Roboflow detection and drawing bounding boxes ===
-print("▶️ Step 2 : Running static.py to draw bounding boxes on frames...")
+print("▶️ Step 2 : Running static_deepsort.py to draw bounding boxes on frames...")
 subprocess.run(["python", "static.py"], check=True)
-print("✅ static.py completed.\n")
+print("✅ static_deepsort.py completed.\n")
 
 display_images_from_folder("accident_frames", "Step 2: Accident Frames")
+display_images_from_folder("bbox/images", "Step 3: Localization")
 
-# === STEP 3: Draw distance lines and determine location ===
-print("▶️ Step 3 : Running line.py to overlay lines and locate object distance...")
-subprocess.run(["python", "line.py"], check=True)
-print("✅ line.py completed.\n")
+# print("▶️ Step 2.5 : Running direction_estimator.py to analysis direction...")
+# subprocess.run(["python", "direction_estimator.py"], check=True)
+# print("✅ direction_estimator.py completed.\n")
 
-if os.path.exists("current_video.txt"):
-    with open("current_video.txt", "r") as f:
-        video_filename = f.read().strip()
-    video_name = os.path.splitext(video_filename)[0]
-    line_output_dir = f"bbox/line_output_{video_name}"
-    
-    display_images_from_folder("bbox/images", "Step 3: Roboflow BBox Images")
-    display_images_from_folder(line_output_dir, "Step 3: Line Overlay Results")
+# === STEP 3: Camera height + MiDaS distance (run_height_then_midas.py) ===
+print("▶️ Step 3 : Running run_height_then_midas.py for camera height & MiDaS distance...")
+subprocess.run(["python", "run_height_then_midas.py"], check=True)
+print("✅ run_height_then_midas.py completed.\n")
 
-# 顯示 accident_distances.json 新增的結果
-show_json_content("accident_distances.json", "Step 3: Estimated Distance")
+# 如果你之後想看高度估計的 JSON，可以順便秀出來（可留可刪）
+height_summary_path = os.path.join("track_vis", "height_est_summary.json")
+show_json_content("final_results.json", "Step 3: Distance Estimation")
 
 print("🎉 All tasks complete!")

@@ -68,6 +68,11 @@ for image_name in os.listdir(input_dir):
 
     # Save JSON
     json_output_path = os.path.join(output_json_dir, f"{os.path.splitext(image_name)[0]}.json")
+    json_output = {
+        "frame": image_name,
+        "center": [float(x), float(y)],
+        "predictions": result["predictions"]
+    }
     with open(json_output_path, "w") as f:
-        json.dump(result, f, indent=2)
+        json.dump(json_output, f, indent=2)
     print(f"📝 Saved JSON result to: {json_output_path}\n")

@@ -1,0 +1,6 @@
+{
+    "motion_relative_to_camera": "right",
+    "accident_lane_direction": "westbound",
+    "camera_heading": "south",
+    "raw_model_output": "```json\n{\n\"motion_relative_to_camera\": \"right\"\n}\n```"
+}

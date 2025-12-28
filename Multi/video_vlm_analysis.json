@@ -1,0 +1,18 @@
+[
+    {
+        "bullet_point": "- Here's a frame-by-frame analysis of the traffic conditions in the video:",
+        "timecode": 0
+    },
+    {
+        "bullet_point": "- *    Cars are stationary at an intersection. A truck is in the middle lane.",
+        "timecode": 0.0
+    },
+    {
+        "bullet_point": "- *    The truck overturns onto the other cars in the middle lane. Debris and dust fill the air.",
+        "timecode": 11.0
+    },
+    {
+        "bullet_point": "- *    The truck is overturned. Cars are damaged, and dust has settled slightly.",
+        "timecode": 18.0
+    }
+]

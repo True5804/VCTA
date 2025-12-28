@@ -1,0 +1,93 @@
+{
+  "static_analysis_results": [
+    {
+      "timestamp": 14.0,
+      "frame_path": "accident_frames\\frame_14.0s.jpg",
+      "is_accident": true,
+      "confidence": 9,
+      "analysis": "1. YES - There is definitely a traffic accident.\n2. Confidence level: 9\n3. Detailed description of what I see:\nThe image shows a severe traffic accident involving multiple vehicles on the road. A large truck has crashed into another vehicle, causing significant damage to both vehicles involved. The impact appears to to have caused debris to fly off and scatter across the road. Emergency personnel are visible at the scene, likely assessing the situation or providing assistance.\n\n4. Specific evidence of accident (if any):\n- Debris scattered across the road from the collision between the truck and the other vehicle.\n- Smoke emanating from the damaged area where the two vehicles collided.\n- Emergency personnel present at the scene, indicating an active response to the incident.",
+      "evidence": [
+        "collision",
+        "damage",
+        "crash",
+        "debris",
+        "emergency",
+        "impact"
+      ]
+    },
+    {
+      "timestamp": 15.0,
+      "frame_path": "accident_frames\\frame_15.0s.jpg",
+      "is_accident": true,
+      "confidence": 9,
+      "analysis": "1. YES - There is definitely a traffic accident.\n2. Confidence level: 9\n3. Detailed description of what I see:\nThe image shows a chaotic scene with multiple vehicles involved in an apparent accident. A white van and a black car are both overturned, indicating they have crashed into each other or collided with something on the ground. The impact has caused significant damage to their structures, with parts of the vehicles hanging off at odd angles. Debris from the vehicles can be seen scattered around the area.\n\n4. Specific evidence of accident:\n- The white van is completely flipped over onto its roof, exposing its interior components.\n- The black car appears to to have been hit by the white van, as it is also tilted sideways and partially obscured by debris.\n- Both vehicles show signs of having collided with something below them, possibly a curb or another vehicle that was not visible in the frame.\n- Emergency personnel are present near the scene, suggesting this may be a serious incident requiring immediate attention.",
+      "evidence": [
+        "damage",
+        "crash",
+        "debris",
+        "emergency",
+        "impact"
+      ]
+    },
+    {
+      "timestamp": 16.0,
+      "frame_path": "accident_frames\\frame_16.0s.jpg",
+      "is_accident": true,
+      "confidence": 9,
+      "analysis": "1. YES - There is definitely a traffic accident.\n2. Confidence level: 9\n3. Detailed description of what I see:\nThe image shows a severe traffic accident involving multiple vehicles on a multi-lane road. The most prominent vehicle appears to to be a white truck that has crashed into the center divider, causing significant damage and debris scattered across the lanes. Another vehicle, possibly a car, is also involved in the crash with its front end crumpled and partially submerged in the wreckage of the truck.\n\nThere are no visible emergency personnel or vehicles from law enforcement present at the scene. Debris can be seen strewn across the road, indicating the force of the impact. No other vehicles appear to have crashed out of their respective lanes but are instead positioned awkwardly due to the severity of the collision.\n\n4. Specific evidence of accident:\n- The white truck is lodged against the center divider, with its front wheels embedded in it.\n- The front bumper of the truck is detached and lying on the road.\n- The hood of the truck is crumpled upwards, exposing the engine compartment.\n- Debris is scattered across the road, including parts of the truck's bodywork and tires.\n- The position of the second vehicle suggests it was caught off guard by the initial impact.",
+      "evidence": [
+        "collision",
+        "damage",
+        "crash",
+        "debris",
+        "emergency",
+        "impact"
+      ]
+    },
+    {
+      "timestamp": 17.0,
+      "frame_path": "accident_frames\\frame_17.0s.jpg",
+      "is_accident": true,
+      "confidence": 9,
+      "analysis": "1. YES - There is definitely a traffic accident.\n2. Confidence level: 9\n3. Detailed description of what I see:\nThe image shows a chaotic scene on a multi-lane road with significant damage to several vehicles. A white van and a black car are involved in the collision, both heavily damaged and partially off their wheels assemblies. The impact has caused debris to be scattered across the lanes, including parts of the vehicles themselves. Emergency personnel can be seen attending to the situation, indicating that this is an active incident.\n\n4. Specific evidence of accident (if any):\n- Debris from the vehicles, such as broken glass or metal fragments, is visible on the road surface.\n- One vehicle's front end appears to to have been crumpled significantly due to the force of the crash.\n- Smoke is emanating from one of the vehicles, suggesting recent friction between components during the collision.\n- The positioning of the vehicles suggests they were traveling at high speeds before the accident occurred.",
+      "evidence": [
+        "collision",
+        "damage",
+        "crash",
+        "debris",
+        "emergency",
+        "impact"
+      ]
+    },
+    {
+      "timestamp": 18.0,
+      "frame_path": "accident_frames\\frame_18.0s.jpg",
+      "is_accident": true,
+      "confidence": 9,
+      "analysis": "1. YES - There is definitely a traffic accident.\n2. Confidence level: 9\n3. Detailed description of what I see:\nThe image shows a highway scene with significant damage to the road and vehicles involved in an apparent collision. A large truck has crashed into multiple cars, causing debris scattered across the lanes. The truck's cab is severely damaged, with its front end crumpled and parts hanging off. Several other vehicles are also visible, some with their doors open or windows shattered, indicating they may have been involved in the crash as well.\n\n4. Specific evidence of accident:\n- Debris on the road from the overturned truck and other vehicles.\n- Crumpled and misaligned vehicle positions due to impact.\n- Emergency personnel present at the scene, likely assessing the situation and providing assistance.\n- Smoke or dust rising from the wreckage, suggesting recent contact between vehicles or objects.",
+      "evidence": [
+        "collision",
+        "damage",
+        "crash",
+        "debris",
+        "emergency",
+        "impact"
+      ]
+    },
+    {
+      "timestamp": 18.6,
+      "frame_path": "accident_frames\\frame_18.6s.jpg",
+      "is_accident": true,
+      "confidence": 9,
+      "analysis": "1. YES - There is definitely a traffic accident.\n2. Confidence level: 9\n3. Detailed description of what I see:\nThe image shows a highway scene with significant damage to the road and vehicles. A large white truck has crashed into another vehicle, causing both to to be heavily damaged. The impact appears to to have been severe enough to cause debris to fly through the air. Debris from the crash can be seen scattered across the road. Emergency personnel are present at the scene, likely assessing the situation or providing assistance.\n\n4. Specific evidence of accident:\n- The white truck is significantly tilted and partially on top of another vehicle.\n- The front end of the white truck is crumpled and detached from its cab.\n- Debris is visible in the air and on the ground near the vehicles involved.\n- The surrounding area shows signs of recent activity, such as tire marks and disturbed pavement.",
+      "evidence": [
+        "damage",
+        "crash",
+        "debris",
+        "emergency",
+        "impact"
+      ]
+    }
+  ],
+  "total_verified": 6
+}
